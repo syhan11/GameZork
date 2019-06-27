@@ -19,12 +19,35 @@ public class Room {
         max++;
     }
 
+    public Room(String name) {
+        number = max;
+        this.name = name;
+        items = "";
+        money = 0.0;
+        thief = false;
+        max++;
+    }
+
+    public Room(String name, String items) {
+        number = max;
+        this.name = name;
+        this.items = items;
+        money = 0.0;
+        thief = false;
+        max++;
+    }
+
     public Room(String name, String items, double money, boolean thief) {
         number = max;
         this.name = name;
         this.items = items;
-        this.money = money;
         this.thief = thief;
+
+        // convert money value to be 2 decimal points
+        String tmpStr = String.format("%.2f", money);
+        double tmpVal = Double.parseDouble(tmpStr);
+        this.money = tmpVal;
+
         max++;
     }
 
@@ -54,9 +77,10 @@ public class Room {
     }
 
     public  void setMoney(double money) {
-        // convert double money into 2 decimal points
-        //NumberFormat.getCurrencyInstance().format(valD);
-        this.money = money;
+        // convert money value to be 2 decimal points
+        String tmpStr = String.format("%.2f", money);
+        double tmpVal = Double.parseDouble(tmpStr);
+        this.money = tmpVal;
     }
 
     public  boolean isThief() {
